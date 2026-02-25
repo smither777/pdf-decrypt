@@ -527,6 +527,13 @@ function collectEncryptedItems(context, encryptRefNum, encryptMetadata) {
       continue;
     }
 
+    // Skip signature dictionaries — /Contents and /ByteRange must not be decrypted
+    // per PDF spec Section 7.6.1 (applies to both stream and non-stream /Sig objects)
+    if (obj instanceof PDFDict && !(obj instanceof PDFRawStream)) {
+      const type = obj.get(PDFName.of('Type'));
+      if (type && type.toString() === '/Sig') continue;
+    }
+
     // Check if this is a stream with a /Type we should skip
     if (obj instanceof PDFRawStream && obj.dict) {
       const type = obj.dict.get(PDFName.of('Type'));
@@ -677,6 +684,12 @@ function decryptAllRC4(context, encryptionKey, encryptRefNum) {
     }
 
     // Skip objects that must not be decrypted per PDF spec (Section 7.6.1)
+    // Signature dictionaries: /Contents and /ByteRange must not be decrypted
+    if (obj instanceof PDFDict && !(obj instanceof PDFRawStream)) {
+      const type = obj.get(PDFName.of('Type'));
+      if (type && type.toString() === '/Sig') continue;
+    }
+
     if (obj instanceof PDFRawStream && obj.dict) {
       const type = obj.dict.get(PDFName.of('Type'));
       if (type) {
