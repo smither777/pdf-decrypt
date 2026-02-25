@@ -1,0 +1,66 @@
+{
+  "name": "@pdfsmaller/pdf-decrypt",
+  "version": "1.0.0",
+  "description": "Full-featured PDF decryption with AES-256 and RC4 support. Companion to @pdfsmaller/pdf-encrypt. Powers PDFSmaller.com's PDF unlock tool.",
+  "type": "commonjs",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "node build.js",
+    "test": "node test.js",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "pdf",
+    "decryption",
+    "pdf-decryption",
+    "pdf-decrypt",
+    "pdf-unlock",
+    "AES-256",
+    "AES",
+    "RC4",
+    "128-bit",
+    "256-bit",
+    "password-removal",
+    "pdf-security",
+    "cloudflare",
+    "edge",
+    "workers",
+    "browser",
+    "pdf-lib",
+    "pdfsmaller"
+  ],
+  "author": "PDFSmaller.com <hello@pdfsmaller.com> (https://pdfsmaller.com)",
+  "homepage": "https://pdfsmaller.com",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/smither777/pdf-decrypt.git"
+  },
+  "bugs": {
+    "url": "https://github.com/smither777/pdf-decrypt/issues"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "peerDependencies": {
+    "pdf-lib": "^1.17.1"
+  },
+  "devDependencies": {
+    "pdf-lib": "^1.17.1",
+    "@pdfsmaller/pdf-encrypt": "^1.0.0"
+  }
+}
