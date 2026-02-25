@@ -1,6 +1,6 @@
 {
   "name": "@pdfsmaller/pdf-decrypt",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Full-featured PDF decryption with AES-256 and RC4 support. Companion to @pdfsmaller/pdf-encrypt. Powers PDFSmaller.com's PDF unlock tool.",
   "type": "commonjs",
   "main": "dist/index.js",
