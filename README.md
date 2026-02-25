@@ -144,9 +144,11 @@ Choose `pdf-decrypt-lite` if you only need RC4 and want the smallest possible bu
 
 ## Related Packages
 
-- [@pdfsmaller/pdf-encrypt](https://www.npmjs.com/package/@pdfsmaller/pdf-encrypt) — Full encryption (AES-256 + RC4)
-- [@pdfsmaller/pdf-encrypt-lite](https://www.npmjs.com/package/@pdfsmaller/pdf-encrypt-lite) — Lightweight RC4-only encryption (~7KB)
-- [@pdfsmaller/pdf-decrypt-lite](https://www.npmjs.com/package/@pdfsmaller/pdf-decrypt-lite) — Lightweight RC4-only decryption (~8KB)
+| Package | Description |
+|---------|-------------|
+| [@pdfsmaller/pdf-encrypt](https://www.npmjs.com/package/@pdfsmaller/pdf-encrypt) | Full encryption — AES-256 + RC4 (companion to this package) |
+| [@pdfsmaller/pdf-encrypt-lite](https://www.npmjs.com/package/@pdfsmaller/pdf-encrypt-lite) | Lightweight RC4-only encryption (~7KB) |
+| [@pdfsmaller/pdf-decrypt-lite](https://www.npmjs.com/package/@pdfsmaller/pdf-decrypt-lite) | Lightweight RC4-only decryption (~8KB) |
 
 ## License
 
