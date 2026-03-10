@@ -1,12 +1,14 @@
 # @pdfsmaller/pdf-decrypt
 
+> **Fork note:** This is a fork of [@pdfsmaller/pdf-decrypt](https://www.npmjs.com/package/@pdfsmaller/pdf-decrypt) that adds support for **AES-256 V=5/R=5** (Adobe's pre-ISO extension). The upstream package only supports V=5/R=6 (ISO 32000-2). R=5 uses plain SHA-256 for password validation, while R=6 uses the iterative Algorithm 2.B. Many older PDFs encrypted by Adobe Acrobat X/XI use R=5.
+
 Full-featured PDF decryption with **AES-256** and **RC4** support. Built for browsers, Node.js 18+, Cloudflare Workers, and Deno.
 
 Companion to [@pdfsmaller/pdf-encrypt](https://www.npmjs.com/package/@pdfsmaller/pdf-encrypt). Powers [PDFSmaller.com](https://pdfsmaller.com)'s [Unlock PDF](https://pdfsmaller.com/unlock-pdf) tool.
 
 ## Features
 
-- **AES-256 decryption** (V=5, R=6) — PDF 2.0 standard
+- **AES-256 decryption** (V=5, R=5/6) — PDF 2.0 standard + Adobe extension
 - **RC4 40/128-bit decryption** (V=1-2, R=2-3) — legacy support
 - **User + Owner passwords** — accepts either password to decrypt
 - **Batched async decryption** — processes thousands of objects without browser freeze
@@ -125,6 +127,7 @@ const decrypted = await decryptPDF(encrypted, 'secret');
 | Algorithm | PDF Version | Key Length | Status |
 |-----------|-------------|-----------|--------|
 | AES-256 (V=5, R=6) | 2.0 (ISO 32000-2) | 256-bit | Supported |
+| AES-256 (V=5, R=5) | Adobe Extension Level 3 | 256-bit | Supported |
 | RC4 (V=2, R=3) | 1.4+ (ISO 32000-1) | 128-bit | Supported |
 | RC4 (V=1, R=2) | 1.1+ | 40-bit | Supported |
 | AES-128 (V=4, R=4) | 1.6+ | 128-bit | Not yet supported |

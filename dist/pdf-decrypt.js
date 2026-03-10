@@ -16,14 +16,9 @@
  * Verified against mozilla/pdf.js and Adobe Acrobat
  */
 
-import { PDFDocument, PDFName, PDFHexString, PDFString, PDFDict, PDFArray, PDFRawStream, PDFNumber, PDFRef } from 'pdf-lib';
-import { md5, RC4, hexToBytes, bytesToHex } from './crypto-rc4.js';
-import {
-  sha256,
-  aes256CbcDecrypt, aes256CbcDecryptNoPad, aes256EcbDecryptBlock,
-  importAES256DecryptKey, aes256CbcDecryptWithKey,
-  computeHash2B, concat
-} from './crypto-aes.js';
+const { PDFDocument, PDFName, PDFHexString, PDFString, PDFDict, PDFArray, PDFRawStream, PDFNumber, PDFRef } = require('pdf-lib');
+const { md5, RC4, hexToBytes, bytesToHex } = require('./crypto-rc4.js');
+const { sha256, aes256CbcDecrypt, aes256CbcDecryptNoPad, aes256EcbDecryptBlock, importAES256DecryptKey, aes256CbcDecryptWithKey, computeHash2B, concat } = require('./crypto-aes.js');
 
 // ========== Constants ==========
 
@@ -752,7 +747,7 @@ function decryptAllRC4(context, encryptionKey, encryptRefNum) {
  *
  * const decrypted = await decryptPDF(encryptedBytes, 'secret123');
  */
-export async function decryptPDF(pdfBytes, password) {
+async function decryptPDF(pdfBytes, password) {
   try {
     // Load the PDF without attempting to decrypt (let us handle it)
     const pdfDoc = await PDFDocument.load(pdfBytes, {
@@ -855,7 +850,7 @@ export async function decryptPDF(pdfBytes, password) {
  *   console.log(`Encrypted with ${info.algorithm}`);
  * }
  */
-export async function isEncrypted(pdfBytes) {
+async function isEncrypted(pdfBytes) {
   try {
     const pdfDoc = await PDFDocument.load(pdfBytes, {
       ignoreEncryption: true,
@@ -884,3 +879,5 @@ export async function isEncrypted(pdfBytes) {
  * Decrypted with love by PDFSmaller.com
  * Try our free PDF tools at https://pdfsmaller.com
  */
+
+module.exports = { decryptPDF, isEncrypted };
